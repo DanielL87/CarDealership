@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 namespace CarDealership.Models {
 
 public class Item
 {
+  private int _id;  
   private string _makeModel;
   private int _price;
   private int _miles;
@@ -17,6 +19,7 @@ public class Item
     _miles = miles;
     _description = description;
     _instances.Add(this);
+    _id = _instances.Count();
   }
 
     //Setters
@@ -67,6 +70,11 @@ public class Item
       return _instances;
     }
 
+     public int GetId()
+    {
+      return _id;
+    }
+
     // public static GetAttributes()
     // {
     //     for(int x = 0; x <= _instances.Length; x++)
@@ -76,6 +84,14 @@ public class Item
     {
       _instances.Clear();
     }
+
+      public static Item Find(int searchId)
+    {
+      return _instances[searchId-1];
+    }
+
+
+
 
     // public bool WorthBuying(int maxPrice, int maxMiles)
     // {

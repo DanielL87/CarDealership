@@ -10,11 +10,13 @@
 {
   @foreach (Item item in Model)
   {
-    <li>Make: @item.GetMakeModel()</li>
-    <li>Price: $@item.GetPrice()</li>
-    <li>Miles: @item.GetMiles()</li>
-    <li>Description: @item.GetDescription()</li>
+    <li><a href='/items/@item.GetId()'>@item.GetMakeModel()</a></li>
+
   }
 }
 </ul>
 <a href="/items/new">Add a new car.</a>
+
+<form action="/items/delete" method="post">
+  <button type="submit" name="button">Clear All Items</button>
+</form>
